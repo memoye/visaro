@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oleo+Script:wght@400;700&family=Ysabeau&display=swap');
+
+@font-face {
+	font-family: 'segoe-ui';
+	src: url('/fonts/segoe-ui.ttf');
+}
+
+@font-face {
+	font-family: 'jersey';
+	src: url('/fonts/jersey.ttf');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
