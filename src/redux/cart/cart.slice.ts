@@ -1,31 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-type Product = {
-	id: number;
-	title: string;
-	price: number;
-	description: string;
-	category: string;
-	image: string;
-	quantity: number;
-	rating: {
-		rate: number;
-		count: number;
-	};
-};
+import { updateCartItem } from '../store.utils';
+import { Product } from '../products/product.request';
 
 const initialState = {
 	cartItems: [] as Product[],
-};
-const updateCartItem = (
-	state: typeof initialState,
-	id: Product['id'],
-	updateFn: (item: Product) => Product
-) => {
-	const updatedCartItems = state.cartItems.map((item: Product) =>
-		item.id === id ? updateFn(item) : item
-	);
-	state.cartItems = updatedCartItems;
 };
 
 const cartSlice = createSlice({
@@ -63,6 +41,20 @@ const cartSlice = createSlice({
 			}));
 		},
 	},
+	selectors: {
+		selectCartItems: (state) => state.cartItems,
+		selectCartTotalPrice:(state)=>{
+			let total = 0;
+			for (const item of state.cartItems) {
+				total  = total + (item.quantity * item.price)
+			}
+			return total.toFixed(2)
+		}
+	},
 });
+
+export const  {addToCart, removeFromCart, increaseQuantity, decreaseQuantity} = cartSlice.actions
+
+export const { selectCartItems, selectCartTotalPrice } = cartSlice.selectors;
 
 export default cartSlice.reducer;

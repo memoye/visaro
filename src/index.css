@@ -14,4 +14,15 @@
 @tailwind components;
 @tailwind utilities;
 
+.fade__in{
+	animation: fade__in 1s ease forwards;
+}
 
+@keyframes fade__in {
+	from {
+		opacity: 0.5;
+	}
+	to {
+		opacity: 1;
+	}
+}

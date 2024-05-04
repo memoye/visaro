@@ -4,21 +4,22 @@ import Cart from './pages/Cart';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import SharedAppLayout from './components/SharedAppLayout';
-import SharedHomeLayout from './pages/SharedHomeLayout';
+import { Toaster } from 'react-hot-toast';
+
+
 
 const router = createBrowserRouter([
 	{
 		element: <SharedAppLayout />,
+		path: '/',
 		children: [
 			{
-				path: '/',
-				element: <SharedHomeLayout />,
-				children: [
-					{
-						path: "/:category",
-						element: <Home />
-					}
-				]
+				path: '/',		
+				element: <Home />,
+			},
+			{
+				path: '/home/:category',
+				element: <Home />,
 			},
 			{
 				path: '/cart',
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
 function App() {
 	return (
 		<Provider store={store}>
+			<Toaster
+				position="top-center"
+				reverseOrder={false}
+				gutter={8}
+			/>
 			<RouterProvider router={router} />
 		</Provider>
 	);

@@ -15,7 +15,7 @@ export const fetchProducts = createAsyncThunk(
 	async (_, { rejectWithValue }): Promise<Product[]> => {
 		try {
 			const response = await fetch(
-				`${import.meta.env.VITE_BASE_URL}/products`
+				`${import.meta.env.VITE_BASE_URL}`
 			);
 			const result = await response.json() as Product[];
 			return result;

@@ -1,23 +1,44 @@
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../redux/store';
-import { fetchProducts } from '../redux/products/product.request';
+import { useAppSelector } from '../redux/store';
 import ProductCard from '../components/ProductCard';
+import { selectProducts } from '../redux/products/products.slice';
+import { Fragment } from 'react/jsx-runtime';
+import { useParams } from 'react-router-dom';
+
+const currentImage = {
+	"men's": '/men-bg.jpg',
+	"women's": '/women-bg.jpg',
+	glasses: '/glass-bg.jpg',
+	hats: '/hat-bg.jpg',
+};
 
 function Home() {
-	const dispatch = useAppDispatch();
-	const { status, products } = useAppSelector((state) => state.products);
+	const products = useAppSelector(selectProducts);
+	const { category: currentCategory } = useParams<{
+		category: keyof typeof currentImage;
+	}>();
 
-	useEffect(() => {
-		if (status == 'idle') {
-			dispatch(fetchProducts());
-		}
-	}, []);
 	return (
-		<section className="grid grid-cols-product_container gap-x-8 gap-y-20 px-4 mt-6 bg-gray-100">
-			{products.map((product) => (
-				<ProductCard {...product} />
-			))}
-		</section>
+		<Fragment>
+			<header className="h-[30rem] flex justify-center items-center relative fade__in">
+				<h1 className="uppercase text-white font-bold text-9xl z-10 font-jersey">
+					{currentCategory ? `${currentCategory} shop` : 'visaro'}
+				</h1>
+				<img
+					className=" absolute left-0 top-0 h-full brightness-[.75]  w-full block object-cover "
+					src={currentImage[currentCategory!] || '/men-bg.jpg'}
+					alt=""
+				/>
+			</header>
+			<section className="grid grid-cols-product_container gap-x-8 gap-y-10 px-4 pt-12 bg-gray-100 pb-6">
+				{products.map((product) => {
+					if (product.category.toLowerCase() === currentCategory) {
+						return <ProductCard {...product} />;
+					} else if (currentCategory === undefined) {
+						return <ProductCard {...product} />;
+					}
+				})}
+			</section>
+		</Fragment>
 	);
 }
 export default Home;
