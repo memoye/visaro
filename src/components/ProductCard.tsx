@@ -1,4 +1,4 @@
-import { Product } from '../redux/cart/cart.request';
+import { Product } from "../redux/products/product.request";
 
 function ProductCard(props: Product) {
 	return (

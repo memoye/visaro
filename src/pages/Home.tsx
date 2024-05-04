@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/store';
-import { fetchProducts } from '../redux/cart/cart.request';
+import { fetchProducts } from '../redux/products/product.request';
 import ProductCard from '../components/ProductCard';
 
 function Home() {
