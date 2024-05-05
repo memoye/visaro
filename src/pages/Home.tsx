@@ -20,7 +20,7 @@ function Home() {
 	return (
 		<Fragment>
 			<header className="h-[30rem] flex justify-center items-center relative fade__in">
-				<h1 className="uppercase text-white font-bold text-9xl z-10 font-jersey">
+				<h1 className="uppercase text-white font-bold text-5xl text-center md:text-9xl z-[3] font-jersey">
 					{currentCategory ? `${currentCategory} shop` : 'visaro'}
 				</h1>
 				<img

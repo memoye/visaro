@@ -5,7 +5,7 @@ function OrderSummary() {
    const cartItemTotalPrice = useAppSelector(selectCartTotalPrice);
 
   return (
-    <div className="w-[26%]  sticky top-[10vh] h-fit" >
+    <div className="md:w-[26%]  sticky top-[10vh] h-fit" >
       <h1 className="bg-gray-200 font-bold text-xl py-4 border-b border-b-gray-300 px-4 text-gray-500">Order Summary</h1>
       <div className="[&>div]:mb-3 [&>div]:text-sm [&>div]:px-4 py-5 bg-gray-200">
          <div className="flex justify-between items-center">
