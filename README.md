@@ -21,4 +21,4 @@ An E-commerce store that features attires of four different categories; Men's, W
 2. Create `.env.local`
 3. Add your paystack public key `VITE_PAYSTACK_PUBLIC_KEY=your_paystack_public_key` - Visit [paystack](https://paystack.com/docs) to get one
 4. Run dev server - `npm run dev`
-5. To build `npm run build`
+5. To build - `npm run build`
