@@ -1,30 +1,24 @@
-# React + TypeScript + Vite
+# visaro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An E-commerce store that features attires of four different categories; Men's, Women's, Glasses, and Hats
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Ability to filter based on category
+- Cart
+- Payment Integration with Paystack
 
-## Expanding the ESLint configuration
+## Built with
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React.js
+- React Router DOM
+- TailwindCSS
+- Redux
 
-- Configure the top-level `parserOptions` property like this:
+## To run
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Install dependencies - `npm install`
+2. Create `.env.local`
+3. Add your paystack public key `VITE_PAYSTACK_PUBLIC_KEY=your_paystack_public_key` - Visit [paystack](https://paystack.com/docs) to get one
+4. Run dev server - `npm run dev`
+5. To build `npm run build`
