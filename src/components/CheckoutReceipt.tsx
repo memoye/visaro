@@ -1,18 +1,32 @@
-import { useNavigate } from "react-router-dom";
-import { selectCartTotalPrice } from "../redux/cart/cart.slice";
+import {
+  selectCartItems,
+  selectCartTotalPrice,
+} from "../redux/cart/cart.slice";
 import { useAppSelector } from "../redux/store";
 
-function OrderSummary() {
-  const navigate = useNavigate();
+function CheckoutReceipt() {
   const cartItemTotalPrice = useAppSelector(selectCartTotalPrice);
+  const cartItems = useAppSelector(selectCartItems);
 
   return (
     <div className="sticky  top-[10vh] h-fit md:w-[26%]">
       <h2 className="border-b border-b-gray-300 bg-gray-200 px-4 py-4 text-xl font-bold text-gray-500">
-        Order Summary
+        Order
       </h2>
-      <div className="bg-gray-200 py-5 [&>div]:mb-3 [&>div]:px-4 [&>div]:text-sm">
-        <div className="flex items-center justify-between">
+
+      <div className="bg-gray-200 py-5 [&>div]:mb-3 [&>div]:px-4 [&>div]:text-sm [&>div]:font-semibold">
+        <ul className="border-b border-b-gray-300 bg-gray-200 pb-4 [&>li]:mb-3 [&>li]:px-4 [&>li]:text-sm">
+          {cartItems.map((item) => (
+            <li key={item.id} className="flex items-center justify-between">
+              <p className="w-2/3 truncate">
+                {item.quantity} {item.name}
+              </p>
+              <p className="font-semibold">${item.price}</p>
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex items-center justify-between pt-4">
           <p>Subtotal</p>
           <p className="">${cartItemTotalPrice}</p>
         </div>
@@ -29,13 +43,7 @@ function OrderSummary() {
         <h2 className="font-bold">Total</h2>
         <h2 className="font-bold">${cartItemTotalPrice}</h2>
       </div>
-      <button
-        onClick={() => navigate("/checkout", { replace: true })}
-        className="mt-4 w-full bg-blue-500 py-3 text-center font-bold text-white"
-      >
-        Checkout
-      </button>
     </div>
   );
 }
-export default OrderSummary;
+export default CheckoutReceipt;
