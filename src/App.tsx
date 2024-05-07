@@ -8,11 +8,13 @@ import { Toaster } from "react-hot-toast";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import Error from "./pages/Error";
 
 const router = createBrowserRouter([
   {
     element: <SharedAppLayout />,
     path: "/",
+    errorElement: <Error />,
     children: [
       {
         index: true,
