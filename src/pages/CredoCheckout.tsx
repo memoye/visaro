@@ -1,10 +1,10 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
-import CheckoutForm from "../components/CheckoutForm";
+import { CredoCheckoutForm } from "../components/CredoCheckoutForm";
 import CheckoutReceipt from "../components/CheckoutReceipt";
 
 type Status = "paid" | "pending" | null;
 
-function Checkout() {
+export default function CredoCheckout() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
@@ -52,7 +52,7 @@ function Checkout() {
         ) : (
           <>
             <div className=" md:w-[74%] ">
-              <CheckoutForm />
+              <CredoCheckoutForm />
             </div>
             <CheckoutReceipt />
           </>
@@ -61,4 +61,3 @@ function Checkout() {
     </div>
   );
 }
-export default Checkout;

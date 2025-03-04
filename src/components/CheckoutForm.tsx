@@ -49,7 +49,7 @@ function CheckoutForm() {
     },
     publicKey,
     text: `Pay - $${amount}`,
-    onSuccess: (transaction: any) => {
+    onSuccess: (transaction: { reference: string }) => {
       dispatch(emptyCart());
       navigate(`/checkout?status=paid&ref=${transaction.reference}`);
     },
@@ -116,7 +116,7 @@ function CheckoutForm() {
 
       <div className="my-4 flex flex-col items-center gap-2 lg:flex-row">
         {!email ||
-        !email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g) ||
+        !email.match(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g) ||
         !firstName ? (
           <button
             disabled

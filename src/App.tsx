@@ -7,8 +7,9 @@ import { Toaster } from "react-hot-toast";
 // pages
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout";
+// import Checkout from "./pages/Checkout";
 import Error from "./pages/Error";
+import CredoCheckout from "./pages/CredoCheckout";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/checkout",
-        element: <Checkout />,
+        element: <CredoCheckout />,
+        // element: <Checkout />,
       },
     ],
   },
